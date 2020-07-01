@@ -1,7 +1,3 @@
-### Building from the source
+### nasph Command Line Interface 
 
-npm install -g
-
-Ready!
-
-npm ls -g --depth=0
+Please, just type nasph-cli ... that's all! :D
