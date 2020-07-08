@@ -14,7 +14,7 @@ Please in order to have nasph-cli running, please you must have installed the fo
 
 1.1 - Please, once you had installed the git , you will be able to clone de cli repository, you will use the following command:
 
-    git clone [https://github.com/nasph-io/nasph-cli](https://github.com/nasph-io/nasph-cli)
+    git clone https://github.com/nasph-io/nasph-cli
 
 That will create a folder called `nasph-cli` , please, enter in the created folder. 
 
