@@ -60,9 +60,9 @@ const run = async() => {
                 containers.forEach(function (container) {
                 let state = container.Status;
                         if(state.substr(0, 2) == "Up"){
-                            console.log(chalk.keyword("green")(`Container ${container.Names} - current status ${container.Status} - based on image ${container.Image}`))
+                            console.log(chalk.keyword("green")(`Container ${container.Names} - current status ${container.Status} - based on image ${container.Image}`));
                         }else{
-                            console.log(`Container ${container.Names} - current status ${container.Status} - based on image ${container.Image}`)
+                            console.log(chalk.keyword("red")(`Container ${container.Names} - current status ${container.Status} - based on image ${container.Image}`));
                         }
                   })
                 console.log(chalk.keyword("magenta")("================================================================================"));
