@@ -6,7 +6,8 @@ const figlet = require("figlet");
 const shell = require("shelljs");
 const clear = require("clear");
 const { Docker } = require('node-docker-api');
-const Docker2 = require('dockerode')
+const Docker2 = require('dockerode');
+const { default: container } = require("node-docker-api/lib/container");
 
 const docker = new Docker({ socketPath: '/var/run/docker.sock' });
 const dockerToList = new Docker2({ socketPath: '/var/run/docker.sock' });
@@ -55,11 +56,17 @@ const run = async() => {
         await dockerToList.listContainers({ all: true }, (err, containers) => {
              if (containers.length > 0){
                 console.log('Total number of containers: ' + containers.length);
+
                 containers.forEach(function (container) {
-                    console.log(`Container ${container.Names} - current status ${container.Status} - based on image ${container.Image}`)
-                })
+                let state = container.Status;
+                        if(state.substr(0, 2) == "Up"){
+                            console.log(chalk.keyword("green")(`Container ${container.Names} - current status ${container.Status} - based on image ${container.Image}`))
+                        }else{
+                            console.log(`Container ${container.Names} - current status ${container.Status} - based on image ${container.Image}`)
+                        }
+                  })
                 console.log(chalk.keyword("magenta")("================================================================================"));
-             }
+                }
              else{
                 console.log("No containers in execution at this moment.");
                 console.log(chalk.keyword("magenta")("================================================================================"));
