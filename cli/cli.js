@@ -170,7 +170,7 @@ const run = async() => {
           console.log(chalk.keyword("green")(`File: ${file_path}`));
 
          // myAPI = '/Users/edgar/Downloads/openinsurance/hdi-offers.yml';
-         myAPI = '/Users/edgar/Downloads/openinsurance/discovery.yml';
+         myAPI = file_path;
 
           SwaggerParser.validate(myAPI, (err, api) => {
             if (err) {
