@@ -1,0 +1,29 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "name": "<%=krakendData.configName%>",
+    "timeout": "3000ms",
+    "cache_ttl": "300s",
+    "output_encoding": "no-op",
+    "endpoints": [
+    <% for(var i=0; i<krakendData.endpoints.length; i++) {%>
+      {
+        "endpoint": "<%=krakendData.endpoints[i].uri%>",
+        "method": "<%=krakendData.endpoints[i].method%>",
+        "output_encoding": "no-op",
+        "backend": [
+          {
+            "url_pattern": "<%=krakendData.basePath%><%=krakendData.endpoints[i].uri%>",
+            "encoding": "no-op",
+            "sd": "static",
+            "method": "<%=krakendData.endpoints[i].method%>",
+            "host": [
+              "<%=krakendData.host%>"
+            ],
+            "disable_host_sanitize": false
+          }
+        ]
+      }
+      <% } %>
+    ]
+  }
